@@ -30,6 +30,7 @@ interface Props {
   id?: string;
   defaultTheme?: string;
   attr?: string;
+  disablePrefetch?: boolean;
 }
 
 export function ThemeSwitcherProvider({
@@ -38,6 +39,7 @@ export function ThemeSwitcherProvider({
   defaultTheme,
   id = 'current-theme-style',
   attr = 'data-theme',
+  disablePrefetch = false,
   ...rest
 }: Props) {
   const [status, setStatus] = React.useState<Status>(Status.idle);
@@ -116,6 +118,8 @@ export function ThemeSwitcherProvider({
   }, [defaultTheme]);
 
   React.useEffect(() => {
+    if (disablePrefetch) return;
+
     const themes = Object.keys(themeMap);
 
     themes.map(theme => {
@@ -131,7 +135,7 @@ export function ThemeSwitcherProvider({
       }
       return '';
     });
-  }, [themeMap, insertStyle]);
+  }, [themeMap, insertStyle, disablePrefetch]);
 
   const value = React.useMemo(
     () => ({

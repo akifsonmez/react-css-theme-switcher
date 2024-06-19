@@ -190,7 +190,7 @@ const App = () => {
 | id             | String | current-theme-style | Id of the current selected CSS.                                                                                                                                                                                                     |
 | insertionPoint | String or HTMLElement |                     | Comment string or element where pre-fetch styles and current themes will be injected. The library will look for the comment string inside head element. If missing will append styles at the end of the head. This is useful for CSS override. |
 | themeMap       | Object |                     | Object with all themes available. Key is the theme name and the value is the path for the CSS file.                                                                                                                                 |
-
+| disablePrefetch | Boolean | false | Disables pre-fetching of stylesheets.|
 ### useThemeSwitcher
 
 #### Returns
